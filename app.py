@@ -16,7 +16,7 @@ def db_check():
 
     db_list = []
 
-    conn = mysql.connector.connect (user='user', password='password',
+    conn = mysql.connector.connect (user='mysqladmin', password='Divya@123',
                                host='server_address',buffered=True)
     
     cursor = conn.cursor()
