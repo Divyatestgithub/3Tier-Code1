@@ -4,8 +4,11 @@
 # Three-Tier Architecture in Azure
 
 Loadbalancer Tier -->like a webserver which directs the traffic to backend pools
+
 Application Tier -->on vm application is hosted
+
 Database Tier
+
 Three-tier architecture is a well-established software application architecture that organizes applications into three logical and physical computing tiers: the presentation tier, or user interface; the application tier, where data is processed; and the data tier, where the data associated with the application is stored and managed.
 
 # Configure Provider
