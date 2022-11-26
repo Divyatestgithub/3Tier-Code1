@@ -1,7 +1,7 @@
 resource "azurerm_mssql_server" "sqlserver" {
   name                         = "sqlserver400908"
-  resource_group_name          = local.resource_group_name
-  location                     = local.location
+  resource_group_name          = var.resource_group_name
+  location                     = var.location
   version                      = "12.0"
   administrator_login          = "sqladmin"
   administrator_login_password = "Azure@3456"  
