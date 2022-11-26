@@ -52,14 +52,21 @@ resource "azurerm_linux_virtual_machine" "appvm" {
 }
 
 resource "null_resource" remoteExecProvisionerWFolder {
-
-  provisioner "remote-exec" {
+  
+  provisioner "file" {
+    source      = "./app/app.py"
+    destination = "/var/wwww/app/app.py"
+  }
+  provisioner "file" {
+    source      = "./app/requirements.txt"
+    destination = "/var/wwww/app/requirements.txt"
+  }
+  
+ provisioner "remote-exec" {
     inline = [
 
         "sudo apt-get install -y python3-pip",
         "sudo apt-get install build-essential libssl-dev libffi-dev python-dev",
-        
-        "mkdir /var/www/app",
 
         # creating python virtual enviornment & activating.
         "pip3 install virtualenv",
@@ -72,19 +79,9 @@ resource "null_resource" remoteExecProvisionerWFolder {
 
     ]
   }
-
-  provisioner "file" {
-    source      = "./app/app.py"
-    destination = "/var/wwww/app/app.py"
-  }
-  provisioner "file" {
-    source      = "./app/requirements.txt"
-    destination = "/var/wwww/app/requirements.txt"
-  }
-
   connection {
     count=  var.number_of_machines
-    host     = "${azurerm_virtual_machine.appvm[count.index].ip_address}"
+    host     = "${azurerm_linux_virtual_machine.appvm[count.index].private_ip_address}"
     type     = "ssh"
     user     = "adminuser"
     private_key = file("~/.ssh/id_rsa.pem")
