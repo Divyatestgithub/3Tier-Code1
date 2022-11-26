@@ -83,9 +83,10 @@ resource "null_resource" remoteExecProvisionerWFolder {
   }
 
   connection {
-    host     = "${azurerm_virtual_machine.vm.ip_address}"
+    count=  var.number_of_machines
+    host     = "${azurerm_virtual_machine.appvm[count.index].ip_address}"
     type     = "ssh"
-    user     = "${var.admin_username}"
+    user     = "adminuser"
     private_key = file("~/.ssh/id_rsa.pem")
     agent    = "false"
   }
