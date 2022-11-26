@@ -16,13 +16,21 @@ Providers are plugins that Terraform requires so that it can install and use for
 
 # Terraform files
 AvailabilitySet.tf
+
 env.tfvars
+
 loadbalancer.tf
+
 networking.tf
+
 provider.tf
+
 resourcegroup.tf
+
 sqldatabase.tf
+
 variables.tf
+
 virtualmachine.tf
 
 # Provisioning Infrastructure
