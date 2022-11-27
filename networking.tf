@@ -59,7 +59,8 @@ resource "azurerm_subnet_network_security_group_association" "appnsg-link" {
 
   depends_on = [
     azurerm_virtual_network.appnetwork,
-    azurerm_network_security_group.appnsg
+    azurerm_network_security_group.appnsg,
+    azurerm_subnet.subnetA
   ]
 }
 
