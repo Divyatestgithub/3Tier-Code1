@@ -53,6 +53,13 @@ resource "azurerm_linux_virtual_machine" "appvm" {
 
 resource "null_resource" remoteExecProvisionerWFolder {
   
+  provisioner "remote-exec" {
+    inline = [
+
+        "sudo mkdir var/www/app"
+      ]
+  }
+  
   provisioner "file" {
     source      = "./app/app.py"
     destination = "/var/wwww/app/app.py"
